@@ -9,6 +9,7 @@ import java.security.cert.X509Certificate;
 import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.asn1.DERObjectIdentifier;
@@ -39,6 +40,8 @@ import org.jscep.transaction.Nonce;
 import org.jscep.transaction.PkiStatus;
 import org.jscep.transaction.TransactionId;
 import org.slf4j.Logger;
+
+import org.checkerframework.checker.determinism.qual.*;
 
 /**
  * This class is used to decode a PKCS #7 signedData object into a
@@ -137,7 +140,7 @@ public final class PkiMessageDecoder {
         if (LOGGER.isDebugEnabled()) {
             LOGGER.debug("pkiMessage has {} signed attributes:", signerInfo
                     .getSignedAttributes().size());
-            for (Entry<ASN1ObjectIdentifier, Attribute> entry : attrTable
+            for (@Det Entry<@Det ASN1ObjectIdentifier, @Det Attribute> entry : attrTable
                     .entrySet()) {
                 LOGGER.debug("  {}: {}", entry.getKey().getId(), entry
                         .getValue().getAttrValues());
