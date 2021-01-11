@@ -284,6 +284,9 @@
 						<!-- Add all the checkers you want to enable here -->
 						<annotationProcessor>org.checkerframework.checker.determinism.DeterminismChecker</annotationProcessor>
 					</annotationProcessors>
+					<compilerArgs>
+						<arg>-AusePolyDefault</arg>
+					</compilerArgs>
 				</configuration>
 			</plugin>
 			<plugin>
